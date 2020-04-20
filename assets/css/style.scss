@@ -1,0 +1,16 @@
+---
+---
+// Color Definitions
+$primary-color:#0A112B;
+$secondary-color:#10193C;
+$tertiary-color:#FF8300;
+
+// Font definitions
+$primary-font:'Oswald', sans-serif;
+$secondary-font:'EB Garamond', serif;
+
+body{
+    font-family: $primary-font;
+    background-color: $primary-color;
+    color: white;
+}
