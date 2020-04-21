@@ -27,6 +27,36 @@ body{
     color: $tertiary-color !important;
 }
 
+//Footer
+.footerBox{
+    height: 70px;
+    width: 100%;
+    background-color: $secondary-color;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    font-family: $secondary-font;
+    display: flex; 
+    align-items: center;
+    justify-content: space-between;
+}
+.footerText{
+    text-align: center; 
+    font-size: 17px;
+    margin-left: 30px;
+}
+.footerImage{
+    padding-right: 20px;
+    height: 40px;
+    transition-duration: 500ms;
+
+    &:hover {
+        transform: scale(1.2);
+
+        filter: invert(55%) sepia(56%) saturate(2836%) hue-rotate(359deg) brightness(101%) contrast(106%);
+    }
+}
+
 //index.html
 .homepageMainName{
     font-family: $primary-font;
@@ -57,4 +87,18 @@ body{
 }
 .homepageCol{
     width: 500px;
+}
+
+//generics
+.section{
+    font-family: $primary-font;
+    font-size: x-large;
+    color: $tertiary-color;
+
+}
+
+.bodyText{
+    font-family: $secondary-font;
+    font-size: medium;
+    color: $quaternary-color;
 }
