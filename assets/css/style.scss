@@ -4,6 +4,7 @@
 $primary-color:#0A112B;
 $secondary-color:#10193C;
 $tertiary-color:#FF8300;
+$quaternary-color:#FFFFFF;
 
 // Font definitions
 $primary-font:'Oswald', sans-serif;
@@ -13,4 +14,17 @@ body{
     font-family: $primary-font;
     background-color: $primary-color;
     color: white;
+}
+
+//Navbar
+.nav-link{
+    color: $quaternary-color !important;
+    font-family: $primary-font !important;
+    padding-right: 50px !important;
+    text-align: right;
+}
+
+
+.current{
+    color: $tertiary-color !important;
 }
