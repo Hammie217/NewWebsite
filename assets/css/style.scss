@@ -271,6 +271,53 @@ body{
     font-size: large;
     margin-bottom: 0px;
 }
+//Blog
+.blogFlexbox{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 50px;
+    text-align: left;
+    margin-left: 12vw;
+    margin-right: 12vw;
+    align-items: stretch;
+}
+.blogBox{
+    margin: auto;
+    background-color: $secondary-color;
+    width:80%;
+    margin-left: 10%;
+    box-shadow: 30px 30px 6px #000000;
+    margin-bottom: 60px;
+    padding: 10px 10px 10px 10px;
+}
+.blogPostImage{
+    margin: auto;
+    display: block;
+    max-height: 500px;
+    width: auto;
+}
+.blogPostTitle{
+    font-family: $primary-font;
+    color: $tertiary-color;
+    font-size: xx-large;
+    transition-duration: 300ms;
+    &:hover{
+        color: $quaternary-color;
+        text-decoration: none;
+    }
+}
+.blogPostDate{
+    font-family: $secondary-font;
+    color: $quaternary-color;
+    font-size: x-large;
+}
+.blogPostAbstract{
+    font-family: $secondary-font;
+    color: $quaternary-color;
+    font-size: large;
+}
 //generics
 .section{
     font-family: $primary-font;
