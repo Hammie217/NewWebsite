@@ -13,6 +13,19 @@
     
     {% include navbar.html %}
     <div class="genericTitle">{{ page.heading }}</div>
+    <div class="collumnsFlexbox">
+        
+        {% for entry in site.data.reports %}
+        <div class="collumnsCollumn"><div class="collumnsHeader">{{ entry.title }}</div>
+            {% for subcategory in entry.subcategories %}
+                <a class="collumnsReport" href="{{ subcategory.href }}">{{ subcategory.title }}</a><br/>
+            {% endfor %}
+        </div>
+        {% endfor %}
+
+
+
+    </div>
 
 
 

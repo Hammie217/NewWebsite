@@ -57,7 +57,7 @@ body{
     }
 }
 
-//index.html
+//homeLayout
 .homepageMainName{
     font-family: $primary-font;
     color: $tertiary-color;
@@ -87,6 +87,42 @@ body{
 }
 .homepageCol{
     width: 500px;
+}
+
+//collumns
+.collumnsFlexbox{
+    display: flex;
+    align-items: stretch;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    text-align: center;
+}
+.collumnsCollumn{
+    background-color: $secondary-color;
+    box-shadow: 30px 30px 6px #000000;
+    width: 330px;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+}
+.collumnsHeader{
+    color: $tertiary-color;
+    font-family: $primary-font;
+    text-align: center;
+    font-size: xx-large;
+    margin-bottom: 10px;
+}
+.collumnsReport{
+    color: $quaternary-color;
+    font-family: $secondary-font;
+    text-align: center;
+    font-size: x-large;
+    transition-duration: 300ms;
+    &:hover{
+        color: $tertiary-color;
+        text-decoration: none;
+    }
 }
 
 //generics
