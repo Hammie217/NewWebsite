@@ -295,8 +295,8 @@ body{
 .blogPostImage{
     margin: auto;
     display: block;
-    max-height: 500px;
-    width: auto;
+    max-width: 100%;
+    height: auto;
 }
 .blogPostTitle{
     font-family: $primary-font;
@@ -318,17 +318,38 @@ body{
     color: $quaternary-color;
     font-size: large;
 }
+.blogPostMain{
+    width: 75%;
+    margin: auto;
+    text-align: left;
+}
+.blogImage{
+    width: 80%;
+    margin-left: 10%;
+}
 //generics
 .section{
+    font-family: $primary-font;
+    font-size: xx-large;
+    color: $tertiary-color;
+
+}
+.subsection{
     font-family: $primary-font;
     font-size: x-large;
     color: $tertiary-color;
 
 }
+.subsubsection{
+    font-family: $primary-font;
+    font-size: x-large;
+    color: $secondary-color;
+
+}
 
 .bodyText{
     font-family: $secondary-font;
-    font-size: medium;
+    font-size: large;
     color: $quaternary-color;
 }
 

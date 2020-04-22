@@ -1,0 +1,69 @@
+---
+layout: bpost
+title:  "Z80 Computer"
+heading:  "Z80 Computer"
+description : As a honor to the ZX spectrum (and a tool to practice assembly), I decided to put some time into develloping a Z80 computer with RAM, ROM and external I/O. This is hopefully the first blog post of many around this project and this is the first update of progress.
+day: 03/Mar/2020
+image: "/assets/posts/z80Computer/3D.png"
+---
+
+
+<h1 class="section">Iteration One</h1>
+    <h3 class="subsection">What is the project</h3>
+        <p class="bodyText">
+            This first section is purely about the first iteration of the Z80 computer.
+            Unfortunately due to the current Coronavirus outbreak in China the PCBs ordered from china won't arrive for many months and thus current progress is purely theoretical.
+            The basics of this project is the Z80 processor, a 8-bit venerable chip from 1976 famed for its use in many systems especially the ZX Spectrum. 
+            The idea of this first iteration is to create a basic functioning processor with RAM and ROM and ability to control IO purely to get hands on with the board.
+            In the future I plan to use the information from this to add to the processor allowing easier programming of the device with interupts and efficient use of processor tools.
+            Ideally at the end of this project I will have a board available to be distributed populated or purely designs for others to use and hack with possibly even at hackathons teaching low-level programming.
+            My plan with this board is to make it as open as possible allowing anyone to probe and learn where they want, this means things like through hole components may be better to allow  others to easily create and make troublehooting easier.
+        </p>
+
+    <h3 class="subsection">Current Progress</h3>  
+        <p class="bodyText">The easiest way to show the current progress is looking at the designs made as shown below in Figure 1,2 and 3. </p>
+            
+            <img src="/assets/posts/z80Computer/Schematic.png"  class="blogImage">
+            <p style="text-align: center;">Figure 1: Kicad Schematic of the Z80 with all current peripherals.</p>
+
+            <p class="bodyText">
+                The majority of the system is taken up by the wiring of the Z80 with the RAM, ROM and IO pins. Around that there are a few things, starting with the simple there are LED's which are there purely to show off the extra pins on the processor that will hopefully help with later iterations by understanding and for ease of testing of code. Next the power supply, seen in the top left are two USB inputs, simply used for 5V power and attached in parallel allowing either cable to be used. These is almost no regulation on this except a single capacitor used to prevent against dynamic voltage drop during switching states. 
+                Continuing clockwise a single chip oscillator is used to generate the input clock signal. Again clockwise a 555 chip can be seen, this is being used to allow the user to input step by step clock pulses insead of the full speed osillator, the 555 circuit is simply debouncing the switch by forcing the input for a certain time despite the input after a certain time set by the CR circuit.
+                Next can be found two mounting holes, I thought it may be possible to make these grounded for ease of testing, turns out you can't (at least not like this).
+                At the bottom a single chip can be seen, this is being used to chip select between RAM, ROM or IO based on the MSB address and IOREQ states.
+                I do now realise in future schematics following a more destinct and well labeled diagram would be useful alongside alligining useful pins together as is done on the Z80 but not on the RAM or ROM making data and address busses much less distinct and much more complex than need be.
+            </p>
+            <img src="/assets/posts/z80Computer/wiring.png"  class="blogImage">
+            <p style="text-align: center;">Figure 2: Kicad PCB wiring view of the schematic in Figure 1.</p>
+
+            <p class="bodyText">
+            Above you can see the PCB design, I opted to organise the system with all components bunched together for ease of everything.
+            The LEDs at the top should easily show how the processor responds to everything along with buttons along the bottom allowing the user to input signals just as easilt for testing.
+            As you can see I filled both the top and bottom with a ground plane, the board is currently 2 layer as it's much cheaper to make however in the future a 4 level board may be better to allow better signal and routing along with the added benefit of noise suppression(And it's just plain cooler).
+            </p>
+
+            <img src="/assets/posts/z80Computer/3D.png"  class="blogImage">
+            <p style="text-align: center;">Figure 3: Kicad 3D render of the Z80 processor design.</p>
+
+            <p class="bodyText"> In Figure 3 above, you may see that the USB A footprint is missing, unfortunately I couldn't seem to find one anywhere. Apart from this, this should be a somewhat accurate look of the PCB after assembly.</p>
+            
+            <h3 class="subsection">Issues</h3>
+            <p class="bodyText">
+            Before arriving there are a few things i'd like to change with the next iteration that most of which could've likeley been improved before sending to manufacture with more care and attention.
+            First of all, when talking to a friend of mine he mentioned that the switches/buttons don't align with the pcb footprints on his board which I do believe I too have fallen for and is an annoying issue to have that should be easily fixed.
+            Next an issu I keep making and need to stop, larger wires for power lines would be good but I think in this case will survive and if not a thick jumper may be used in desperate areas.
+            For this I decided to autoroute the board for simplicity but in future I believe hand wiring the lines would be worth the effort.
+            Because of the above many signal integrity issues may be made, in the future I plan to keep clock lines reasonably away from data even though the frequency isn't massive or high voltage\current, adding vias would also be beneficiail.
+            As with the clock keeping data lines as similar length as possible (a distinct data and address bus may help with this) would be beneficial.
+            A big feature i'd like ASAP after understanding the system is to add a way of programming the ROM without taking the chip out of a socket.
+            </p>
+
+            <h3 class="subsection">Learings</h3>
+            <ul class="bodyText">
+              <li>Don't trust all footprints especially for buttons.</li>
+              <li>Keep Kicad files internal to the project for easy distribution.</li>
+              <li>Structure Kicad symbols for diagrams compared to direct wiring layouts.</li>
+              <li>Use Blocks in Kicad to split out distinct blocks such as power electronics and clock generation.</li>
+              <li>Wire by hand where possible realisitcally.</li>
+              <li>Research other similar projects for similar issues already encountered and beautufully resolved.</li>
+            </ul>
