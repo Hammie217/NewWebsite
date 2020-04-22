@@ -10,10 +10,16 @@ $quaternary-color:#FFFFFF;
 $primary-font:'Oswald', sans-serif;
 $secondary-font:'EB Garamond', serif;
 
+html{
+    height: 100%;
+}
 body{
     font-family: $primary-font;
     background-color: $primary-color;
     color: white;
+    position:relative;
+    min-height: 100vh;
+    padding-bottom: 110px;
 }
 
 //Navbar
@@ -32,13 +38,14 @@ body{
     height: 70px;
     width: 100%;
     background-color: $secondary-color;
-    position: fixed;
-    left: 0;
+    position: absolute;
     bottom: 0;
+    width: 100%;
     font-family: $secondary-font;
     display: flex; 
     align-items: center;
     justify-content: space-between;
+    
 }
 .footerText{
     text-align: center; 
@@ -105,6 +112,7 @@ body{
     margin-left: 10px;
     margin-right: 10px;
     margin-bottom: 30px;
+    padding-bottom: 15px;
 }
 .collumnsHeader{
     color: $tertiary-color;
@@ -125,6 +133,144 @@ body{
     }
 }
 
+//cards
+.cardsHeading{
+    color: $tertiary-color;
+    font-family: $primary-font;
+    text-align: center;
+    font-size: 50px;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+.cardsFlexbox{
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    margin-top: 10px;
+    text-align: center;
+    margin-left: 8vw;
+    margin-right: 8vw;
+}
+.cardsCardBig{
+    width: 400px;
+}
+.cardsImageBig{
+    width: 200px;
+}
+.cardsTitleBig{
+    color: $tertiary-color;
+    font-family: $primary-font;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.cardsRoleBig{
+    color: $quaternary-color;
+    font-family: $secondary-font;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+.cardsAbstractBig{
+    color: $quaternary-color;
+    font-family: $secondary-font;
+    text-align: left;
+    font-size: large;
+    margin-bottom: 0px;
+}
+.cardsCardMedium{
+    width: 275px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.cardsImageMedium{
+    width: 150px;
+}
+.cardsTitleMedium{
+    color: $tertiary-color;
+    font-family: $primary-font;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.cardsRoleMedium{
+    color: $quaternary-color;
+    font-family: $secondary-font;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+.cardsAbstractMedium{
+    color: $quaternary-color;
+    font-family: $secondary-font;
+    text-align: left;
+    font-size: large;
+    margin-bottom: 0px;
+}
+.cardsCardSmall{
+    width: 200px;
+    margin-right: 10px;
+    margin-left: 10px;
+}
+.cardsImageSmall{
+    width: 100px;
+}
+.cardsTitleSmall{
+    color: $tertiary-color;
+    font-family: $primary-font;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+.cardsRoleSmall{
+    color: $quaternary-color;
+    font-family: $secondary-font;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+.cardsAbstractSmall{
+    color: $quaternary-color;
+    font-family: $secondary-font;
+    text-align: left;
+    font-size: large;
+    margin-bottom: 0px;
+}
+.cardsSideshowBox{
+    margin: auto;
+    background-color: $secondary-color;
+    width:80%;
+    margin-left: 10%;
+    height: 400px;
+    box-shadow: 30px 30px 6px #000000;
+}
+.cardsCarouselImage{
+    height: 200px;
+    width: auto;
+    margin-bottom: 5px ;
+}
+.cardsCarouselName{
+    color: $tertiary-color;
+    font-family: $primary-font;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+.cardsCarouselAuthor{
+    color: $quaternary-color;
+    font-family: $secondary-font;
+    text-align: center;
+    font-size: 25px;
+    margin-bottom: 0px;
+}
+.cardsCarouselText{
+    color: $quaternary-color;
+    font-family: $secondary-font;
+    text-align: center;
+    font-size: large;
+    margin-bottom: 0px;
+}
 //generics
 .section{
     font-family: $primary-font;
