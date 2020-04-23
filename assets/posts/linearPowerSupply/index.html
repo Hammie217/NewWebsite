@@ -1,85 +1,90 @@
----
-layout: bpost
-title:  "Linear power supply"
-heading:  "Linear power supply"
-description : After struggling for power for all project for years, constantly relying on bodging other power supplies, I decided to invest some time to create a small, precision variable power supply.
-day: 22/Apr/2020
-equations: "True"
-image: "/assets/posts/linearPowerSupply/FinalSchematic.png"
----
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Hammie217 Blog</title>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+		<link type="text/css" rel="stylesheet" href="../../../css/style.css">
+	</head>
+	<body style="margin: 0;" class="BackInBlack">
+		<link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display&display=swap" rel="stylesheet">
 
-<h1 class="section">Introduction</h1>
-    <p class="bodyText">
-    My first electronics project at home during university was creating a small linear power supply, I ended up using an LM317 and it wasn't exactly perfect, it used a huge and expensive transformer and capacitances far too high meaning a very slow turn off. It was also analog with no biasing meaning a minimum of 1.25V so not accurate or a brilliant range, safe to say some improvements would be nice. One good thing was the project had a nice off-white case with a 3d printed back and front plate with space for a display, potentiometer and fused IEC connector. <br/>
+
+		<script src="../../../js/main.js"></script>
+		<div class="Middle2">
+        <h1 class="UppermainName">Power supply</h1>
+        </div>
+		<div id="mySidenav" class="sidenav">
+			<a href="../index.html" id="about">Home</a>
+			<a href="../reports.html" id="blog">Reports</a>
+			<a href="../programs.html" id="projects">Programs</a>
+			<a href="../about.html" id="contact">About</a>
+        </div>
+
+        <div class="seventyPercentWidth blogFont">
+            <hr style="border-top: 1px solid #fff;">
+            <br style="padding-top: 20px;">
+            <h1>Introduction</h1>
+            My first electronics project at home during university was creating a small linear power supply, I ended up using an LM317 and it wasn't exactly perfect, it used a huge and expensive transformer and capacitances far too high meaning a very slow turn off. It was also analog with no biasing meaning a minimum of 1.25V so not accurate or a brilliant range, safe to say some improvements would be nice. One good thing was the project had a nice off-white case with a 3d printed back and front plate with space for a display, potentiometer and fused IEC connector. <br/>
             
-    The year after, I salvaged the transformer from my power supply into a new design using off the shelf buck converters, they were definitely cheap but were a bit out of spec (10V too low... whoops) and with no current limiting you sometimes began smelling a little smoke almost always from the over-volted LED. This power supply did however allow for a dual output isolated power supply with two displays showing the voltage (inaccurately but enough for the applications I was using it for) in the future I then designed a buck converter using a higher voltage and current rated internal switch buck controller. The biggest issdues this time were no current limit, inacurate display, trimmer for voltage output and very noisy voltage output. The buck converter allowed for a much more efficient and therefore higher current supply but that simply isn't what I use it for especially without a current limit.<br/>
-    </p>
+            The year after, I salvaged the transformer from my power supply into a new design using off the shelf buck converters, they were definitely cheap but were a bit out of spec (10V too low... whoops) and with no current limiting you sometimes began smelling a little smoke almost always from the over-volted LED. This power supply did however allow for a dual output isolated power supply with two displays showing the voltage (inaccurately but enough for the applications I was using it for) in the future I then designed a buck converter using a higher voltage and current rated internal switch buck controller. The biggest issdues this time were no current limit, inacurate display, trimmer for voltage output and very noisy voltage output. The buck converter allowed for a much more efficient and therefore higher current supply but that simply isn't what I use it for especially without a current limit.<br/>
+            
+            <img src="OTSBuck.png" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 1: Common and cheap off the shelf buck converter.</p>
 
-    <img src="/assets/posts/linearPowerSupply/OTSBuck.png" class="blogImage"><br />
-    <p style="text-align: center;">Figure 1: Common and cheap off the shelf buck converter.</p>
+            <h1>Specification</h1>
+            Given the reasons above I've decided to finally put some time into designing and creating a useful power supply with the main requirements of:<br/>
+            <ol>
+              <li>Starting voltage of 0V</li>
+              <li>Linear power supply</li>
+              <li>Digital output and control</li>
+              <li>>=3.5 digit accuracy</li>
+              <li>Current limit and readout</li>
+              <li>1Amp is plenty</li>
+            </ol>
+            <h1>Design</h1>
+            To begin the design I decided I'd like to use mains power to stop the faff of dealing with batteries. Unfortunately I've very little experience with mains design given silly university regulations, the easiest solution would be to use a 50Hz transformer but they become expensive fast so a SMPS (Switch mode power supply) is the direction i'd like to take and hopefully clean up any ripple which may be easier than expected given high frequency being easier to filter but low frequency easier for active filtering. Initially I looked towards a buck converter as I needed to only drop voltage and I already have experiece with buck design but given the large voltage ratio and higher power I decided against and after some research on SEPIC converters and other designs I came across the diagram below which lead me towards a Flyback convertor and the LT1725 IC. Unfortunately despite SMPS making smaller transformers the flyback topologies seem to all require many different coupled inductors making much more complex transformers which would be even more complex. After attempting to find a seller of usefully designed coupled inductors I started to worry, thankfully during the COVID-19 crisis many old electronics in our house have been cleaned out including an old 50Hz transformer powersupply capable of delivering around 1A at 16V, this is a little low voltage than I'd like but realistically scaling the electronics should be a simple job once coming across a higher voltage power supply and I rarely use over 10V at a time where I require a clean (linear) DC voltage.
+            <img src="Topologieds.png" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 2: SMPS topologies.</p>
 
-<h1 class="section">Specification</h1> 
-    <p class="bodyText">
-    Given the reasons above I've decided to finally put some time into designing and creating a useful power supply with the main requirements of:<br/>
-    </p>
-    <ol class="bodyText">
-        <li>Starting voltage of 0V</li>
-        <li>Linear power supply</li>
-        <li>Digital output and control</li>
-        <li>>=3.5 digit accuracy</li>
-        <li>Current limit and readout</li>
-        <li>1Amp is plenty</li>
-    </ol>
-
-<h1 class="section">Design</h1>
-    <p class="bodyText">
-    To begin the design I decided I'd like to use mains power to stop the faff of dealing with batteries. Unfortunately I've very little experience with mains design given silly university regulations, the easiest solution would be to use a 50Hz transformer but they become expensive fast so a SMPS (Switch mode power supply) is the direction i'd like to take and hopefully clean up any ripple which may be easier than expected given high frequency being easier to filter but low frequency easier for active filtering. Initially I looked towards a buck converter as I needed to only drop voltage and I already have experiece with buck design but given the large voltage ratio and higher power I decided against and after some research on SEPIC converters and other designs I came across the diagram below which lead me towards a Flyback convertor and the LT1725 IC. Unfortunately despite SMPS making smaller transformers the flyback topologies seem to all require many different coupled inductors making much more complex transformers which would be even more complex. After attempting to find a seller of usefully designed coupled inductors I started to worry, thankfully during the COVID-19 crisis many old electronics in our house have been cleaned out including an old 50Hz transformer powersupply capable of delivering around 1A at 16V, this is a little low voltage than I'd like but realistically scaling the electronics should be a simple job once coming across a higher voltage power supply and I rarely use over 10V at a time where I require a clean (linear) DC voltage.
-    </p>
-    <img src="/assets/posts/linearPowerSupply/Topologieds.png" class="blogImage"><br />
-    <p class="blogImageUndertext">Figure 2: SMPS topologies.</p>
-
-    <h3 class="subsection">Input power design</h3>
-        <p class="bodyText">
+            <h2>Input power design</h2>
             Given the input transformer of \(16V\) (Peak \(16\sqrt{2}=22.6274V \) ) I decided to move onto LTSpice to start testing designs, the first thing that came to mind was a capacitive multiplier given the need for a stable dc input, it was designed to be as stable as possible without taking too long to rise but with a load of 200 Ohms (about 100mA) the system takes nearly a second to get towards a stable value, this could be a problem if the supply is turning on to a load already plugged in giving a very slow turn on. Having a one second turn on isn't too bad however if the power supply just decides to wait before turnning on and so I decided to attach a comparator to the output making sure the device only turns on at 18V in a more square like fasion. In the design below you can see an NPN is used but a relay would be a better solution given less loss and a binary on or off result.
-        </p>
-        <img src="/assets/posts/linearPowerSupply/CapMul.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 3: Capacitor multipler circuit diagram.</p>
-        <img src="/assets/posts/linearPowerSupply/CapMulOut.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 4: Capacitor multipler circuit output voltage.</p>
-        <img src="/assets/posts/linearPowerSupply/SwitchedCapMul.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 5: Capacitor multipler circuit diagram with switcher.</p>
-        <img src="/assets/posts/linearPowerSupply/SwitchedCapMulOut.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 6: Capacitor multipler circuit with switcher output voltage.</p>
-        <p class="bodyText">
+            <img src="CapMul.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 3: Capacitor multipler circuit diagram.</p>
+            <img src="CapMulOut.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 4: Capacitor multipler circuit output voltage.</p>
+            <img src="SwitchedCapMul.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 5: Capacitor multipler circuit diagram with switcher.</p>
+            <img src="SwitchedCapMulOut.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 6: Capacitor multipler circuit with switcher output voltage.</p>
             After this I wondered around forgetting the capacitance multiplier and instead of driving the transistor with a capacitor, instead why not run the device straight from a op-amp reference as seen below. This creates a much faster turn on with the turn on being mostly controlled by the output capacitor C2 which is kept large to reduce ripple. After running this I took a second look at the design and realised I'd simply re-invented the wheel and created a linear regulator.
-        </p>  
-        
-        <img src="/assets/posts/linearPowerSupply/LinReg.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 7: Linear regulator circuit diagram.</p>
-        <img src="/assets/posts/linearPowerSupply/LinRegOut.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 8: Linear regulator circuit output voltage.</p>
-        <p class="bodyText">
+            <img src="LinReg.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 7: Linear regulator circuit diagram.</p>
+            <img src="LinRegOut.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 8: Linear regulator circuit output voltage.</p>
             Comparing the two topologies on 1 amp loads the first version is much more steady DC output with 0.2mVpp ripple after a few seconds compared to 4mVpp ripple on the linear regulator. Plus the output stage of the power supply is going to be a linear regulator so why not mix it up :).
-        </p>
-
-        <img src="/assets/posts/linearPowerSupply/Both.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 9: Power supply comparison.</p>
-        <p class="bodyText">
+            <img src="Both.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 9: Power supply comparison.</p>
             The next steps in the power supply design are to create the voltage reference used on U1 for the comparator and look into the possibility of turn on oscillations by the op-amp turning on and off the output if the current is too high.
+
             To attempt the first of these two errors I'm going to start with powering a voltage reference of any size and then quantifying what gain needs to be set on the op-amp and hope for the best!
             To make this as cheap as possible I'd like to start with simple components and only increase if nesecssary, first of all I'd like to use an LM336 and only E12 resistors, an LM336 creates a 2.5V reference and thus for 18V I need a 7.5 times gain and for a non-inverting amplifier the equation is \(gain=1+\frac{R_2}{R_1}\) and so I need \(6.5=\frac{R_2}{R_1}\), after trying many E12 combinations I found the easiest and closest method is to use 27K and 100k+68K, this used in combination with the zenner creates the desired 18V reference. I decided to use a rail to rail op-amp attached to the pre-multiplier stage to make sure that this 18V output is reached as quickly as possible and remove the possability of the downstream LM358 Op-amp turining on the output before 18V is reached but given the cost of a high voltage rail to rail op-amp and the already used method of using the pre-regulation line I may as well use the second op-amp in the LM358 package. I have used the LT1880 in simulation purely because it's built in and easy to use.
-        </p>
-        <img src="/assets/posts/linearPowerSupply/Referenced.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 10: Power supply with internal reference.</p>
-        <p class="bodyText">
+            <img src="Referenced.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 10: Power supply with internal reference.</p>
             In terms of power supply oscillation, in the worst case simulation it doesn't happen and that's enough for me :).
             Given this seems to be a almost ready design I've taken the time to translate this over to a Kicad diagram as seen below. I took the time to add a few small details such as swapping over to a relay and driving that with an NPN and a low current 5V line. I've also added a slow-blow fuse and swapping over to a non-rail-to-rail op-amp and that's all the changes.
-        </p>
-        <img src="/assets/posts/linearPowerSupply/KicadPSU.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 11: Kicad circuit diagram.</p>
-        <p class="bodyText">
+            <img src="KicadPSU.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 11: Kicad circuit diagram.</p>
             Power supply parts list:
-            <ul class="bodyText">
+            <ul>
               <li>Mains connector IEC?</li>
               <li>1 230V-16V transformer</li>
               <li>1 Low power relay</li>
@@ -98,40 +103,29 @@ image: "/assets/posts/linearPowerSupply/FinalSchematic.png"
               <li>1 general purpose NPN transistor (To drive the relay activation coil)</li>
               
             </ul>
-        </p>
-    
-    <h3 class="subsection">Output voltage stage design</h2>
-        <p class="bodyText">
+            <h2>Output voltage stage design</h2>
             Next step is to create a current and voltage stage but the order depends upon a few things such as an out of spec voltage stage leakage current but if not the current stage would best come first to stop the need of over-voltaging to deal with the burden voltage in the current stage. This leads me to design the voltage stage first and simply use a 0.1 ohm sense resistor doing nothing as a placeholder for now.
             <br />
             I've taken some time to develop a design in Kicad, Unfortunately given I want to use a microcontroller to control the voltage a DAC is being used which LTSpice won't be too happy with, instead injecting fake signals and making sure the DAC is hooked up right will be best. The current design is shown below in Figure: 12.
-        </p>   
-        <img src="/assets/posts/linearPowerSupply/voltageSide.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 12: Kicad circuit diagram of voltage stage.</p>
-        <p class="bodyText">
+            <img src="voltageSide.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 12: Kicad circuit diagram of voltage stage.</p>
             The basis of the design is the LT3080 Low dropout (0V) regulator, this regulator can be off at 0V with the need of 500uA output constantly otherwise a voltage will be present. To meet this requirement an LM334 current source is used with a fixed current of just over 600uA, to do this the current source requires between 0.7-40V on the output, this does mean whilst the output of the power supply is off and the voltage below 0.7V there is going to be a voltage error, until I can figure out how to counteract that we will have to survive. <br />
             The next section of the LT3080 is the set pin, the LT3080 has an  internal comparator to drive the output to the same voltage as the set pin, this is usually done with a resistor given the internal current source but if we drive the pins voltage directly we can have the output follow. To do this a DAC outputs a voltage from our processor (not yet chosen) commands, the DAC is reference to 2.048V meaning for a 12 bit system each bit drives 5uV up to a maximum of 2.048V, as our system wants to be 0-18V this must be amplified by 8.79 to get this and we do such by a simple op-amp gain circuit, this in turn amplifies the voltage per bit to just more than 4mV and as such we can now drive the voltage programattically once hooked up (This gain allows the largest range possible but isn't quite as nice as amplifying by 10 and having a 5mV per bit which might be a future update). The last thing to mention is that the 2.048V voltage is generated in the bottom left by a dedicated reference.
             
             After making the model in LTSpice using LM358 op-amps the model no longer works, I checked every aspect but it appears to simply be a bad LM358 model. After hunting the web for a working model I gave up and am now using another Op-Amp (LT1013) and just hoping the LM358 will work similarly. The LTSpice model can be seen below. <br />
-        </p>
-        <img src="/assets/posts/linearPowerSupply/OutputVoltageStageSim.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 13: LTSpice simulation of voltage output stage.</p>
-        <p class="bodyText">
+            <img src="OutputVoltageStageSim.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 13: LTSpice simulation of voltage output stage.</p>
             The input voltage of 1V is a placeholder for the DAC output voltage which goes through a 10x gain (yes I changed it in the end) amplifier into the set pin. This is then matched at 10V on the output shown on the top graph, the circuit reaches the 10V perfectly with no overshoot. The one issue the simulation has pointed out is the maximum output of 16.48V, this is an under-estimate given the 0.9V drop on the spice model vs using a relay meaning a max output of 17.38V which is simply a requirement we will have to live with. Apart from that the output from the module seems perfect with only miniscule voltage ripple.
-        </p>
-
-    <h3 class="subsection">Output current stage design</h2>
-        <p class="bodyText">
+            <h2>Output current stage design</h2>
             The current limit pre-stage will work by pulling the set pin voltage down through an NPN transistor until the current limit is met (this is controlled by a op-amp comparing actual current to desired). This design however currently would be shorting out the voltage set op-amp output and as such a resistor between the npn and the op-amp output is needed. Creating an algebraic solution for these resistors to give a precise 5V output and the worst case allowed drop over the resistor to get the max output voltage gives \(1+\frac{R_3}{R_4}=10\) and \(\frac{R_3+R_4}{R_1+R_2+R_3+R_4}<\frac{17.38}{17.82}=0.975\). Using these and a common sense value of R3=27k therefore R4=3k and \(R_1+R_2=759\) and so i'm selecting R2=100 and therefore R1=680 which is suprisingly E24 compliant for a first go.
-        </p>
-        <img src="/assets/posts/linearPowerSupply/VoltageControlStage.PNG" class="blogImage"><br />
-        <p class="blogImageUndertext">Figure 14: Circuit diagram of voltage/current output control.</p>
-        <p class="bodyText">
+            <img src="VoltageControlStage.PNG" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 14: Circuit diagram of voltage/current output control.</p>
             I simulated this in LTSpice and in voltage mode the output worked perfectly, once the output triggered the current mode LTSpice couldn't computer the voltage output and ended up oscillating or giving up which I think is down to bad models for some of the more complex components. As such I'm inclined to assume it works and just blame the software ;).
-        </p>
-            <h3 class="subsection">Final touches</h2>
-            <img src="/assets/posts/linearPowerSupply/FinalSchematic.png" class="blogImage"><br />
-            <p class="blogImageUndertext">Figure 15: Final circuit schematic.</p>
-        <p class="bodyText">
+            
+            <h2>Final touches</h2>
+            <img src="FinalSchematic.png" style="width: 80%;margin-left: 10%;"><br />
+            <p style="text-align: center;">Figure 15: Final circuit schematic.</p>
             After designing the main sections of the power suppy I decided to put some time into adding the more simple final touches. Working from the top left of the schematic I added two rotary encoders for controlling voltage and current directly connected to the microprocessor. The next is the LCD display again hooked up directly to the microprocessor. The microprocessor chosen was an AtMega328P given the cost and general availability of information and previous experience with arduino programming. I also decided to add a small LED allowing for program debugging and a signalling LED. The current sense is a simple device which turns a reads the voltage difference over the current sense resistors and outputs that as a current reading to the current limit. The DAC again hooked up to the processor and input to the current and voltage stage. Both the 3.3V and 5V regulators are small current devices for powering the electronics. The voltage reference is a Ref3020 hooked up to give a stable 2.048V output to all devices requiring a reference. The ADC is used to read the output current to the microprocessor over I2C for a displayable current reading. The next is the clock generated by a crystal hooked up to the atmega, the datasheet says any capacitors aren't needed and why would I use space and money for them(Still seems odd). Finally the ISP header for device programming.
-        </p>
+          </div>
+	</body>
+</html>
