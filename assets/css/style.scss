@@ -144,7 +144,7 @@ body{
 }
 .cardsFlexbox{
     display: flex;
-    align-items: flex-end;
+    align-items: baseline;
     justify-content: space-evenly;
     flex-wrap: wrap;
     margin-top: 10px;
@@ -209,12 +209,12 @@ body{
     margin-bottom: 0px;
 }
 .cardsCardSmall{
-    width: 200px;
+    width: 180px;
     margin-right: 10px;
     margin-left: 10px;
 }
 .cardsImageSmall{
-    width: 100px;
+    width: 90px;
 }
 .cardsTitleSmall{
     color: $tertiary-color;
@@ -242,8 +242,8 @@ body{
     background-color: $secondary-color;
     width:80%;
     margin-left: 10%;
-    height: 400px;
     box-shadow: 30px 30px 6px #000000;
+    padding-top: 20px;
 }
 .cardsCarouselImage{
     height: 200px;
@@ -269,7 +269,10 @@ body{
     font-family: $secondary-font;
     text-align: center;
     font-size: large;
-    margin-bottom: 0px;
+    margin-bottom: 40px;
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
 }
 //Blog
 .blogFlexbox{

@@ -45,7 +45,9 @@
                             <div class="card-body">
                                 <h5 class="card-title cardsTitleSmall">{{ subcategory.title }}</h5>
                                 <p class="card-text cardsRoleSmall">{{ subcategory.role }}</p>
-                                <p class="card-text cardsAbstractSmall">{{ subcategory.abstract }}</p>
+                                {% if subcategory.abstract %}
+                                    <p class="card-text cardsAbstractSmall">{{ subcategory.abstract }}</p>
+                                {% endif %}
                             </div>
                         </div>
                     {% endfor %}
