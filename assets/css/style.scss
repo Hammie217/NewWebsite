@@ -345,8 +345,8 @@ body{
 }
 .subsubsection{
     font-family: $primary-font;
-    font-size: x-large;
-    color: $secondary-color;
+    font-size: large;
+    color: $quaternary-color;
 
 }
 
@@ -362,6 +362,22 @@ body{
     color: $tertiary-color;
     text-align: center;
 }
-.fblogPostImage{
-   text-align: center;
+.blogImageUndertext{
+    margin-top: 10px;
+    text-align: center;
+}
+.blogCodeblock{
+    width: 80%;
+    margin-left: auto !important;
+    margin-right: auto !important;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+}
+a{
+    color: $tertiary-color;
+    transition-duration: 300ms;
+    &:hover{
+        color: $quaternary-color;
+        text-decoration: none;
+    }
 }
