@@ -1,7 +1,7 @@
 ---
 ---
 <!doctype html>
-<html >
+<html lang="en">
   <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="/assets/css/style.css">
@@ -19,7 +19,7 @@
                 {% if entry.type == "big" %}
                     {% for subcategory in entry.subcategories %}
                         <div class="card-transparent cardsCardBig">
-                            <img class="card-img-top cardsImageBig" src="{{ subcategory.image }}" alt="Card image cap">
+                            <img class="card-img-top cardsImageBig" loading="lazy" src="{{ subcategory.image }}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title cardsTitleBig">{{ subcategory.title }}</h5>
                                 <p class="card-text cardsRoleBig">{{ subcategory.role }}</p>
@@ -30,7 +30,7 @@
                 {% elsif entry.type == "medium" %}
                     {% for subcategory in entry.subcategories %}
                         <div class="card-transparent cardsCardMedium">
-                            <img class="card-img-top cardsImageMedium" src="{{ subcategory.image }}" alt="Card image cap">
+                            <img class="card-img-top cardsImageMedium" loading="lazy" src="{{ subcategory.image }}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title cardsTitleMedium">{{ subcategory.title }}</h5>
                                 <p class="card-text cardsRoleMedium">{{ subcategory.role }}</p>
@@ -41,7 +41,7 @@
                 {% elsif entry.type == "small" %}
                     {% for subcategory in entry.subcategories %}
                         <div class="card-transparent cardsCardSmall">
-                            <img class="card-img-top cardsImageSmall" src="{{ subcategory.image }}" alt="Card image cap">
+                            <img class="card-img-top cardsImageSmall" loading="lazy" src="{{ subcategory.image }}" alt="Card image cap">
                             <div class="card-body">
                                 <h5 class="card-title cardsTitleSmall">{{ subcategory.title }}</h5>
                                 <p class="card-text cardsRoleSmall">{{ subcategory.role }}</p>

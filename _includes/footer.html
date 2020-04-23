@@ -2,16 +2,16 @@
     <div class="footerText">© 2020 Hamish Sams</div>
     <div>
         {% if page.gitHub %}
-        <a href="https://github.com/{{ page.gitHub }}"><img src="/assets/images/footer/github.svg"   alt="" class="footerImage"></a>
+        <a href="https://github.com/{{ page.gitHub }}" aria-label="Github"><img src="/assets/images/footer/github.svg"   alt="" class="footerImage"></a>
         {% endif %}
         {% if page.linkedin %}
-        <a href="https://www.linkedin.com/in/{{ page.linkedin }}"><img src="/assets/images/footer/linkedin.svg"  alt="" class="footerImage"></a>
+        <a href="https://www.linkedin.com/in/{{ page.linkedin }}" aria-label="Linkedin"><img src="/assets/images/footer/linkedin.svg"  alt="" class="footerImage"></a>
         {% endif %}
         {% if page.twitter %}
-        <a href="https://twitter.com/{{ page.twitter }}"><img src="/assets/images/footer/twitter.svg" alt="" class="footerImage"></a>
+        <a href="https://twitter.com/{{ page.twitter }}" aria-label="Twitter"><img src="/assets/images/footer/twitter.svg" alt="" class="footerImage"></a>
         {% endif %}
         {% if page.facebook %}
-        <a href="https://www.facebook.com/{{ page.facebook }}"><img src="/assets/images/footer/facebook.svg"  alt="" class="footerImage"></a>
+        <a href="https://www.facebook.com/{{ page.facebook }}" aria-label="Facebook"><img src="/assets/images/footer/facebook.svg"  alt="" class="footerImage"></a>
         {% endif %}
     </div>
 </div>
