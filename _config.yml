@@ -10,3 +10,6 @@ defaults:
       linkedin: "hamish-sams-2ba767153"
       twitter: "Hammie217"
       facebook: "Hammie217"
+
+sass:
+    style: compressed
