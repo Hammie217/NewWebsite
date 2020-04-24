@@ -83,6 +83,11 @@ body{
     height: 300px;
     box-shadow: 30px 30px 6px #000000;
     margin-top: 7vh;
+    text-align:center;
+    display: flex;
+    flex-direction:column;
+    flex-wrap: nowrap;
+    justify-content:space-around;
 }
 .homepageContainer{
     display: flex; 
@@ -374,10 +379,10 @@ body{
     margin-bottom: 20px !important;
 }
 a{
-    color: $tertiary-color;
+    color: $tertiary-color !important;
     transition-duration: 300ms;
     &:hover{
-        color: $quaternary-color;
+        color: $quaternary-color !important;
         text-decoration: none;
     }
 }
