@@ -28,6 +28,10 @@ body{
     font-family: $primary-font !important;
     padding-right: 50px !important;
     text-align: right;
+    transition-duration: 300ms;
+    &:hover{
+        color: $tertiary-color !important;
+    }
 }
 .current{
     color: $tertiary-color !important;
