@@ -1,0 +1,50 @@
+---
+layout: bpost
+title:  "Linear power supply"
+heading:  "Linear power supply"
+description : After struggling for power for all project for years, constantly relying on bodging other power supplies, I decided to invest some time to create a small, precision variable power supply.
+day: 15/Apr/2020
+equations: "True"
+image: "/assets/posts/linearPowerSupply/FinalSchematic.png"
+---
+
+<h1 class="section">Introduction</h1>
+    <p class="bodyText">
+        If you haven't seen the previous design post <a href="https://hamish.science/2020/04/15/linear-power-supply">here</a>, feel free to take a look at the design stage first. Here I will discuss the building up process, what I learned, debugging and desired improvements for the project.
+        Overall the Version 1 board was successful, a few issues I wouldn't like to ship a product with (See Figure: 1) but all of which are a learning dimension.
+    </p>
+
+    <img src="/assets/posts/linearPowerSupply2/Version1.png" class="blogImage"><br />
+    <p style="text-align: center;">Figure 1: Image of the version1 design made up and tested.</p>
+
+<h1 class="section">Building the board</h1>
+    <p class="bodyText">
+
+    </p>
+
+<h1 class="section">Debugging and Improvements</h1>
+    <p class="bodyText">
+    <ul class="bodyText">
+        <li>Sense- not connected</li>
+        <li>Capacitors C2,C3 and C4 too low voltage (Bang)</li>
+        <li>Q1 Pin 2-3 shorted</li>
+        <li>Max4080 output oscillating (filter or re-design)</li>
+        <li>Display MISO need to be connected to a new RS pin</li>
+        <li>LT3080 Heatplane re-design</li>
+        <li>Max4080 no decoupling</li>
+        <li>Grounding method improvements</li>
+        <li>Display header doesn't fit without extension (would be wired in box)</li>
+        <li>Rotary encoders too close</li>
+        <li>Contacts too small for banana plugs</li>
+        <li>Footprints aren't good for handsoldering</li>
+        <li>Crystal oscillator minutely too small</li>
+        <li>Crystal oscillator not needed but could be improved</li>
+        <li>Overcurrent detection transistor</li>
+        <li>Rotary encoders not notched</li>
+        <li>Another diagnostic LED (good for showing current limit)</li>
+        <li>Shrink the board and tighten component placement based around a project case</li>
+        <li>Logo to silk screen</li>
+        <li>Re-design input power stage? (Not sure yet, no resources to test mains safely)</li>
+
+      </ul>
+    </p>

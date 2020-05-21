@@ -390,3 +390,61 @@ a{
         text-decoration: none;
     }
 }
+.benchtopImage{
+    max-width:100%;
+    height:auto;
+    max-height:100%;
+}
+
+.na:hover path {
+    fill: blue;
+}
+
+.as:hover path {
+    fill: red;
+}
+
+@keyframes hideshow {
+    0% { opacity: 0; }
+    39% { opacity: 0; }
+    40% { opacity: 1; }
+    44% { opacity: 1; }
+    45% { opacity: 0; }
+    59% { opacity: 0; }
+    60% { opacity: 1; }
+    64% { opacity: 1; }
+    65% { opacity: 0; }
+    75% { opacity: 0; }
+    95% { opacity: 1; }
+    100% { opacity: 1; }
+  } 
+
+.display-8000A {
+    animation: hideshow 2s linear;
+    animation-play-state: paused;
+}
+
+
+.svgWrapper8000A:hover .display-8000A{
+        animation-play-state: running; 
+}
+
+.display-179 {
+    animation: hideshow 2s linear;
+    animation-play-state: paused;
+}
+
+
+.svgWrapper179:hover .display-179{
+        animation-play-state: running; 
+}
+
+.display-192 {
+    animation: hideshow 2s linear;
+    animation-play-state: paused;
+}
+
+
+.svgWrapper192:hover .display-192{
+        animation-play-state: running; 
+}
