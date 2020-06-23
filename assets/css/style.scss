@@ -334,10 +334,22 @@ body{
     width: 55%;
     margin: auto;
     text-align: left;
+    display: flex;
+    flex-direction: column;
 }
 .blogImage{
+    max-width: 100%;
+    max-height: 90vh;
+    margin: 0 auto;
+}
+.blogImageSubCap{
+    text-align: center;
+    padding-bottom: 5vh;
+}
+.blogVideo{
     width: 100%;
-    margin-left: 0%;
+    max-height: 60vh;
+    margin: 0 auto;
 }
 //generics
 .section{

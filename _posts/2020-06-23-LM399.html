@@ -1,0 +1,38 @@
+---
+layout: bpost
+title:  "LM399 Reference"
+heading:  "LM399 Reference"
+description : A begining into the stability and volt chasing area of electronics constantly looking for more precise electronics here using an LM399 reference.
+day: 23/Jun/2020
+image: "/assets/posts/LM399/Box.jpg"
+---
+
+<h1 class="section">Introduction</h1>
+<p class="bodyText">
+I've been becoming more and more interested in chasing the microvolts in systems for designing my own test equipment. Currently the LTZ1000 is top of the range for hobbyists and unfotunately top of the hobbyist price range too. The much more elegantly priced LM399 is readily available and already way above to accuracy I can measure.
+</p>
+
+<h1 class="subsection">Schematic</h1>
+<p class="bodyText">
+To get started I used the typical application schematic from the front page of the LM399 datasheet as seen below in Figure 1.
+</p>
+<img src="/assets/posts/LM399/Schematic.png" class="blogImage"><br />
+<p class="blogImageSubCap">Figure 1: The simple LM399 1V reference design</p>
+<p class="bodyText">
+Simply put it is a precise zenner diode (precise in low temp constant as the reference is actually around 5% tolerance) kept at a constant heat using a heater in the ceramic tin. This keeps the reference at a fairly constant temperature but a small gust or ambient changes can still make a large difference. Due to that I boxed up the breadboarded design into a padded black box with a small hole to pass the wires through as seen in Figure 2.
+</p>
+
+
+<img src="/assets/posts/LM399/Box.jpg" class="blogImage"><br />
+<p class="blogImageSubCap">Figure 2: Padded black box LM399 storage.</p>
+
+    <h1 class="subsection">Short term stablity</h1>
+    <p class="bodyText">
+    To record the short term stability I used a very primative setup of recording the screen over the timescale due to a lack of lab infrastructure currently. I recorded the time alongside this using a kitchen timer seen in the top left. The voltage was measured by my new, uncalibrated 3478A multimeter which actually uses a LM399 as its internal reference, the same as its 7.5 digit brother which instills confidence in the measurement equipment.
+    To "burn off" any internal impurities lefover from manufacture or transport I ran the system for around a day before measuring which ended up making a fair difference in the recorded voltage. The video below shows the reference after this stage running for 99 minutes and only the last digit changes which could well be a mix of the multimeter and reference variance.
+</p>
+    <video  controls class="blogVideo">
+        <source src="/assets/posts/LM399/Stability.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    <p class="blogImageSubCap">Figure 2: 99 minute stability time lapse.</p>
