@@ -1,0 +1,127 @@
+---
+layout: bpost
+title:  "Circuit macros"
+heading:  "Circuit macros intro"
+description: A walkthrough of how to make the most beautiful circuit diagrams I have ever made. It's a little more complex than a GUI but worth it.
+day: 24/Jun/2020
+code : "True"
+image: "/assets/posts/CircuitMacros/Circuit.png"
+---
+<h1 class="section">Introduction</h1>
+<p class="bodyText">
+Here I will be covering the setup of circuit macros for mac but most steps should work on other platforms too. I will show how to create a circuit diagram using PSTricks and Tikz PGF.
+</p>
+<h1 class="section">Install</h1>
+<h1 class="subsection">M4</h1>
+<p class="bodyText">
+First of all download M4 from <a href="ftp://ftp.delorie.com/pub/djgpp/current/v2gnu/m4-14b.zip">Here</a> or if  that link is down check <a href="https://ece.uwaterloo.ca/~aplevich/Circuit_macros/ ">here</a> for updates.
+Uncompress the file and store it where you would like. After that point the M4PATH variable to the location of the folder as seen below.
+</p>
+<pre class="language-bash blogCodeblock">
+    export M4PATH=$M4PATH:~/Desktop/Projects/CircuitMacros
+</pre>
+
+<h1 class="subsection">Dpic</h1>
+<p class="bodyText">
+Download DPIC from gitlab <a href="https://gitlab.com/aplevich/dpic">here</a> and unzip the folder. On mac the installation is required to be local due to SIP (System Integrity Protection) so use the command below. Otherwise if not on mac (sudo) make install should work.
+</p>
+<pre class="language-bash blogCodeblock">
+    sudo make PREFIX=local install
+</pre>
+
+<h1 class="section">Create a circuit</h1>
+<p class="bodyText">
+    First create the m4 file explaining the circuit, if you would like a test file,
+create a file called quick.m4 with the contents:
+</p>
+<pre class="language-bash blogCodeblock">
+    .PS # Pic input begins with .PS
+    cct_init # Read in macro definitions and set defaults
+    elen = 0.75 # Variables are allowed; default units are inches
+    Origin: Here # Position names are capitalized
+    source(up_ elen,V); llabel(,v_s,)
+    resistor(right_ elen,,E); rlabel(,R,)
+    dot
+    { # Save the current position and direction
+    capacitor(down_ to (Here,Origin)) #(Here,Origin) = (Here.x,Origin.y)
+    rlabel(,,); llabel(,C,)
+    dot
+    } # Restore position and direction
+    line right_ elen*2/3
+    inductor(down_ Here.y-Origin.y); rlabel(,L,); b_current(i)
+    line to Origin
+    .PE
+</pre>
+<h1 class="section">PStricks</h1>
+<h1 class="subsection">Compile a file</h1>
+<p class="bodyText">
+Compile using the commands:
+</p>
+<pre class="language-bash blogCodeblock">
+    m4 pstricks.m4 quick.m4 > quick.pic
+    dpic -p quick.pic > quick.tex
+</pre>
+
+<h1 class="subsection">Insert into LaTeX</h1>
+To insert the .tex file into an actual document you will require the basic LaTex info and the pstricks package.
+<pre class="language-bash blogCodeblock">
+    \documentclass[11pt]{article}
+    \usepackage{pstricks}
+    \begin{document}	
+    \begin{figure}[hbt]
+    \centering
+    \input quick
+    \caption{Customized caption for the figure.}
+    \label{Symbolic_label}
+    \end{figure}
+    \end{document}
+</pre>
+<p class="bodyText">
+and compile using XeLaTeX.
+</p>
+<h1 class="section">Tikz PGF</h1>
+    <h1 class="subsection">Compile a file</h1>
+    <p class="bodyText">
+Compile using the commands:
+</p>
+<pre class="language-bash blogCodeblock">
+    m4 pgf.m4 quick.m4 > quick.pic
+    dpic -g quick.pic > quick.tex
+</pre>
+
+<h1 class="subsection">Insert into LaTeX</h1>
+To insert the .tex file into an actual document you will require the basic LaTex info and the tikz package.
+<pre class="language-bash blogCodeblock">
+    \documentclass[11pt]{article}
+    \usepackage{tikz}
+    \begin{document}	
+    \begin{figure}[hbt]
+    \centering
+    \input quick
+    \caption{Customized caption for the figure.}
+    \label{Symbolic_label}
+    \end{figure}
+    \end{document}    
+</pre>
+<p class="bodyText">
+    and compiling using LaTeX.
+</p>
+<h1 class="section">Result</h1>
+<img src="/assets/posts/CircuitMacros/Circuit.png" class="blogImage"><br />
+<p class="blogImageSubCap">Figure 1: Resulting schematic, identical in both methods.</p>
+<p class="bodyText">
+If you would instead like an SVG image you can re-render using the SVG.m4 package and dpic -v but I would personally use the pdf2svg package <a href="https://github.com/dawbarton/pdf2svg">here</a> and is as simple as:
+</p>
+<pre class="language-bash blogCodeblock">
+    pdf2svg input.pdf output.svg
+</pre>
+<p class="bodyText">
+resulting in a shape for shape identical svgremake of the PDF.
+and gives the following result:
+</p>
+<img src="/assets/posts/CircuitMacros/file.svg" alt="Circuit PDF to SVG" width="100%" style="padding-top: 15px;">
+<p class="blogImageSubCap">Figure 2: Resulting SVG schematic.</p>
+
+<p class="bodyText">
+I did change the color to white to be visable on the website but it would naturally be black.
+</p>
