@@ -1,0 +1,42 @@
+---
+layout: bpost
+title:  "ResRat"
+heading:  "ResRat"
+description: ResRat is a command line interface quick use tool that allows for fast resistor ratio selection. Useful for op-amp circuits, potential dividers and more.
+day: 25/Jun/2020
+code : "True"
+image: "/assets/posts/resrat/Example2.png"
+---
+<h1 class="section">Introduction</h1>
+<p class="bodyText">
+    When making circuit I am constantly using resistors matched by some ratio in some form or another, whether that be in an op-amp multiplier or a simple resisistive divider. 
+When you have strange ratios such 5.95 I required for the LM399 testbench it can be hard to find standard values with a common ratio.
+There are online tools to tell you the best mixture of standard resistors to create a required resistance but none that I could find that will find a ratio or use a single resistor.
+This is much more use for me as I would much rather use a single resistor in my design than over-complicate a design with series and parallel combinations and I am almost always looking for ratios not specific resistances. 
+To do this I have made an installable console command that will allow you to find the best ratio.
+You can get it from GitHub <a href="https://github.com/Hammie217/resistorSelectorC">Here</a> and install simply by:
+</p>
+<pre class="language-bash blogCodeblock">
+    ./configure 
+    make 
+    make install 
+</pre>
+
+
+<h1 class="section">What it does</h1>
+<p class="bodyText">
+ResRat is a simple interface allowing for input of a ratio which compares all common resistor series to see if there is a resistor ratio that matches and if not reports back the closest in each series as seen below.
+</p>
+<img src="/assets/posts/resrat/Example.png" class="blogImage"><br />
+<p class="blogImageSubCap">Figure 1: Resrat simple use.</p>
+<h1 class="subsection">Command line arguments</h1>
+<p class="bodyText">
+    ResRat has two command line arguments if you'd like to skip the input step for speed and instead pass it in the command or choose a specific resistor series.
+    </p>
+<pre class="language-bash blogCodeblock">
+    resrat -r *resistor ratio* -e *resistor series*
+</pre>
+
+<img src="/assets/posts/resrat/Example2.png" class="blogImage"><br />
+<p class="blogImageSubCap">Figure 2: Resrat command line arguments use.</p>
+
