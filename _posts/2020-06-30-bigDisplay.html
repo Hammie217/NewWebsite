@@ -1,0 +1,50 @@
+---
+layout: bpost
+title:  "Big 7 Seg Display"
+heading:  "Big 7Seg Display"
+description : Display
+day: 30/Jun/2020
+image: "/assets/posts/bigDisplay/Display/Photos/3D.png"
+---
+
+
+<h1 class="section">Introduction</h1>
+    <h3 class="subsection">What is the project</h3>
+        <p class="bodyText">
+            In many projects I find myself requiring a simple display to show a single or two rows of numbers, namely for displaying voltages and currents concurrently.
+            The usual component selection is the 16x2 alphanumeric LCD displays you see everywhere in arduino projects. These are great when you have an abundance of digital pins and require a wide veriety of things to be displayed and viewed from a short distance.
+            In many of my cases, however, I desire only basic numbers with few pins and a large display is always useful for readouts. For this reason I love 7 Segment displays, unfortunately these can take a fair sized space on a PCB and requires them to be flush with the circuitry and can't be re-purposed once soldered.
+            To counter this I've designed a seperate board with a 4 pin interconnect only requiring two digital pin connections and two power. This solves all of the issues of being large characters, taking up PCB space, I/O pins, directionality and more.
+            Hopefuly once these displays arrive I can use them on all kinds of circuits simply with one interconnect and rarely have to worry about display design again and once the product is less useful to me I can scavange the display instantly.
+        </p>
+
+        <h1 class="section">Design</h1>
+        <h3 class="subsection">Schematic</h3>
+        <p class="bodyText">
+        The board was designed around the TM1640 chip as of its super low cost and availabilty for cheap SMD manufacture. The schematic is fairly simple seen below.
+    </p>
+        <img src="/assets/posts/bigDisplay/Display/Photos/Display.png"  class="blogImage">
+            <p class="blogImageSubCap">Figure 1: Kicad Schematic of the Display circuit. Get the PDF <a href="/assets/posts/bigDisplay/Display/Photos/Display.pdf">here</a>.</p>
+    
+
+
+        <h3 class="subsection">PCB</h3>
+        <p class="bodyText">
+            The PCB was much more of a pain given the large number of pins and attempt at a small PCB size. The design ended up fairly small but in future I'd like to design the board either placing the main IC on the back of the board or to the side reducing the height and wasted space of the board.
+            A few examples of the PCB can be seen below.
+        </p>
+
+        <img src="/assets/posts/bigDisplay/Display/Photos/Circuit.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 2: Kicad PCB design. </p>
+        <img src="/assets/posts/bigDisplay/Display/Photos/3D.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 3: Kicad 3D PCB design. </p>
+        <img src="/assets/posts/bigDisplay/Display/Photos/downImg.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 4: JLCPCB black PCB render. </p>
+        <p class="bodyText">
+        I have unfortunately ordered the PCBs with a length marker for U17 which was unintended and meant to be a sane check for the footprint I designed for the TM1640. I will likely upload this to my website at some point for others to use alongisde the KiCAD schematic model of the TM1640.
+        I would also edit the 7 segment display footprints to stop the false warnings in KiCAD.
+
+        You can download the KiCAD zip <a href="/assets/posts/bigDisplay/Display/Kicad.zip">here</a>.
+        And all project resouces can be found on GitHub <a href="https://github.com/Hammie217/bigDisplay">here</a>.
+    </p>
+
