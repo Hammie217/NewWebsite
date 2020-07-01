@@ -2,16 +2,30 @@
   subcategories:
   - title: "Passive Networks"
     href: "/assets/pageSpecific/reports/firstPN.docx"
+  - title: "Passive Networks (fb)"
+    href: "/assets/pageSpecific/reports/firstPN(fb).pdf"
   - title: "BJT Amplifier"
     href: "/assets/pageSpecific/reports/firstBJT.docx"
+  - title: "BJT Amplifier"
+    href: "/assets/pageSpecific/reports/firstBJT(fb).pdf"
   - title: "Projector teardown"
     href: "/assets/pageSpecific/reports/firstProjector.docx"
+  - title: "Projector teardown (fb)"
+    href: "/assets/pageSpecific/reports/firstProjector(fb).pdf"
   - title: "LED"
     href: "/assets/pageSpecific/reports/firstLED.docx"
   - title: "Logic Gates"
     href: "/assets/pageSpecific/reports/firstLogic.docx"
   - title: "Renewable Infrastructure"
     href: "/assets/pageSpecific/reports/firstRenewable.docx"
+  - title: "Black Box"
+    href: "/assets/pageSpecific/reports/firstBB.doc"
+  - title: "Black Box (fb)"
+    href: "/assets/pageSpecific/reports/firstBB(fb).pdf"
+  - title: "C grades program"
+    href: "/assets/pageSpecific/reports/firstFinalProject.c"
+  
+    
 
 - title: "Second Year"
   subcategories:
@@ -19,6 +33,8 @@
     href: "/assets/pageSpecific/reports/secondArup.pdf"
   - title: "Schottky Diode"
     href: "/assets/pageSpecific/reports/secondSchottky.pdf"
+  - title: "Schottky Diode (fb)"
+    href: "/assets/pageSpecific/reports/secondSchottky(fb).pdf"
   - title: "Embeded Systems"
     href: "/assets/pageSpecific/reports/secondEmbeded.pdf"
   - title: "Grid Infrastructure"
@@ -29,6 +45,8 @@
     href: "/assets/pageSpecific/reports/secondAmpsCut.pdf"
   - title: "Organisational Behaviour"
     href: "/assets/pageSpecific/reports/secondOrganisationalBehavior.pdf"
+  - title: "Organisational Behaviour (fb)"
+    href: "/assets/pageSpecific/reports/secondOrganisationalBehavior(fb).pdf"
   - title: "Work Experience"
     href: "/assets/pageSpecific/reports/secondWorkExperience.pdf"
   - title: "Project Management"
@@ -39,19 +57,41 @@
     href: "/assets/pageSpecific/reports/secondEEE223Assignment2.pdf"
   - title: "Assignment 3"
     href: "/assets/pageSpecific/reports/secondEEE223Assignment3.pdf"
+  - title: "Assignment 3 (fb)"
+    href: "/assets/pageSpecific/reports/secondEEE223Assignment3(fb).pdf"
+  - title: "SAW Filter"
+    href: "/assets/pageSpecific/reports/secondSAWFilter.pdf"
+  - title: "SAW Filter (fb)"
+    href: "/assets/pageSpecific/reports/secondSAWFilter(fb).pdf"
   - title: "EEE225 Notes"
     href: "/assets/pageSpecific/reports/secondEEE225.html"
   - title: "EEE226 Notes"
     href: "/assets/pageSpecific/reports/secondEEE226.html"
 
+
+
+
+    
+    
+
 - title: "Third Year"
   subcategories:
   - title: "Dissertation 1"
     href: "/assets/pageSpecific/reports/thirdProjectInitialisationDocument.pdf"
+  - title: "Dissertation 1 (fb)"
+    href: "/assets/pageSpecific/reports/thirdProjectInitialisationDocument(fb).pdf"
   - title: "Dissertation 2"
     href: "/assets/pageSpecific/reports/thirdInterimReport.pdf"
+  - title: "Dissertation 2 (fb1)"
+    href: "/assets/pageSpecific/reports/thirdInterimReport(fb1).pdf"
+  - title: "Dissertation 2 (fb2)"
+    href: "/assets/pageSpecific/reports/thirdInterimReport(fb2).pdf"
   - title: "Dissertation 3"
     href: "/assets/pageSpecific/reports/threeGAN.pdf"
+  - title: "Dissertation 3 (fb1)"
+    href: "/assets/pageSpecific/reports/threeGAN(fb1).pdf"
+  - title: "Dissertation 3 (fb2)"
+    href: "/assets/pageSpecific/reports/threeGAN(fb2).pdf"
   - title: "Symposia"
     href: "/assets/pageSpecific/reports/thirdSymposia.pdf"
   - title: "Finance Notes"
@@ -61,6 +101,12 @@
   - title: "Law Notes"
     href: "/assets/pageSpecific/reports/thirdLaw.pdf"
 
+
+
+
+
+
+
 - title: "Fourth Year"
   subcategories:
   - title: "Simulink 6205"
@@ -69,10 +115,14 @@
     href: "/assets/pageSpecific/reports/fourthProjectInitialisation.pdf"
   - title: "Dynamic Voltage Scaling"
     href: "/assets/pageSpecific/reports/fourthDynamicVoltageScaling.pdf"
+  - title: "Dynamic Voltage Scaling (fb)"
+    href: "/assets/pageSpecific/reports/fourthDynamicVoltageScaling(fb).pdf"
   - title: "NXP Group presentation"
     href: "/assets/pageSpecific/reports/fourthPresentation.pdf"
   - title: "Threading"
     href: "/assets/pageSpecific/reports/fourthThreading.pdf"
+  - title: "Threading (fb)"
+    href: "/assets/pageSpecific/reports/fourthThreading(fb).pdf"
   - title: "Operating systems"
     href: "/assets/pageSpecific/reports/fourthOperatingSystems.pdf"
   - title: "SPWM motor analysis"
@@ -83,3 +133,8 @@
     href: "/assets/pageSpecific/reports/fourthManagingInnovation.pdf"
   - title: "Autonomous car "
     href: "/assets/pageSpecific/reports/fourthShARC.pdf"
+
+
+
+
+ 
