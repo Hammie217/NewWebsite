@@ -1,0 +1,48 @@
+---
+layout: bpost
+title:  "Custom Domain"
+heading:  "Custom Domain Setup"
+description : A simple tutorial for setting up a custom website URL from scratch. Here I use namecheap and netlify but the steps are almost identical for other domain registrar, SSL certificates and website hosts like goDaddy, cloudflare and gitHub Pages.
+day: 20/Jul/2020
+image: "/assets/posts/customDomain/Image.svg"
+---
+
+<h1 class="section">Introduction</h1>
+    <p class="bodyText">
+        Here I will show the few simple steps I went through to register my new website <a href="http://fortheloveofcircuits.co.uk/">fortheloveofcircuits.co.uk</a>. To setup the website I used <a href="https://www.namecheap.com/">namecheap</a> as a domain registrar and then <a href="https://www.netlify.com/">netlify</a> to host the website through a <a href="https://github.com/Hammie217/forTheLoveOfCircuits">gitHub repository</a> and as a SSL certificate supplier. Other commonly used services such as goDaddy, cloudflare and gitHub pages can be setup using similar steps but with different menus.
+    </p>
+        <h1 class="section">Buy domain</h1>
+        <p class="bodyText">
+        First of all you need to find out where you can find your domain, I find namecheap has the simplest and cheapest domains versus other larger name companies. All you need to do is find your domain name and top-level domain (TLD), these can vary largely in cost but ensure the name is cheap after the first year if you plan to keep the domain for years.
+    </p>
+        <img src="/assets/posts/customDomain/1.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 1: Buying the domain name.</p>
+        
+        <h1 class="section">Register domain with host </h1>
+        <p class="bodyText">
+        Next you need to setup your domain to point to your website host, this is done by registering your domain with your host who will then supply the name servers to point to to redirect to your website. On netlify this can be found at the top of your website page after being setup labeled register a custom domain which leads to some comprehensible instructions.
+        </p>
+        <img src="/assets/posts/customDomain/2.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 2: Selecting setup custom domain on netlify.</p>
+
+        <img src="/assets/posts/customDomain/3.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 3: Entering the domain info on netlify.</p>
+        
+        <h1 class="section">Connect nameservers</h1>
+        <p class="bodyText">
+            After registering and getting your services nameservers (usually 2 or 4 of them as seen below), you need to setup the registrar to point to these servers. After navigating to your website on the registrar there should be a section dedicated to nameservers where you can select a custom DNS, after selecting custom you then need to copy these names over into the registrar and you're ready to go.
+        </p>
+        <img src="/assets/posts/customDomain/4.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 4: Netlify nameservers.</p>
+
+        <img src="/assets/posts/customDomain/5.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 5: Namecheap nameservers setup.</p>
+
+        <h1 class="section">Setup SSL certificate</h1>
+        <p class="bodyText">
+            If you would like a more trustworthy site and overall more secure system you will likely need a SSL certificate. Some domains such as .dev and .app actually require a SSL certificate to display a website at all given a requirement for HTTPS to be used. Most sites use cloudflare for their SSL which is a good option for those hosting their site through gitHub pages, Heroku or others that don't offer SSL certificates. Netlify does offer a free SSL service to any website registered on their system so for ease I will be using that. With nelify it is as easy as setting up your site and waiting for the certificate to be issued, this can be seen below.
+        </p>
+        <img src="/assets/posts/customDomain/6.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 6: Netlify SSL certificate confirmation.</p>
+
+
