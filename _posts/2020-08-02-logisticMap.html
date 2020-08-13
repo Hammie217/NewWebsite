@@ -1,0 +1,39 @@
+---
+layout: bpost
+title:  "Logistic Map"
+heading:  "Logistic Map"
+description : A website dedicated to simpifying and explaining the operation of common building block circuits.
+day: 02/Aug/2020
+image: "/assets/posts/logisticMap/colorWeightedLargeCompressed.png"
+---
+
+
+<h1 class="section">Introduction</h1>
+    <p class="bodyText">
+        After being intrigued by a <a href="https://www.youtube.com/watch?v=ovJcsL7vyrk">certain video</a> by Veritasium about the logistic map. The logistical map is a map/chart derived from a simple iterative equation commonly used for modelling populations x=rx(1-x). When using this equation it is usual for a population to reach an asymptote meaning no matter the starting value over time the population will settle to a stable value determined by the rate R. For R is less than 1 the value will always be 0 as the population is reproducing slower than death. For values above that you may assumme a non-zero asymptote is found increasing with R. That's true until even further the asymptote oscillates between two values, and beyond this value the two asymptotic values themselves osciallate between two more and so on until apparent randomness. If you'd like to see that relationship the best place to look is Figure:2 with the R value and asymptotic value on the y axis. 
+    </p>
+<h1 class="section">Code</h1>
+    <p class="bodyText">
+        To show this relationship I decided i'd like to plot it and create an image. This reminded me of a project from a while ago where I made my current desktop of a mandelbrot set using python. I decided to start with the same library Pillow and start this mini-project where you can find the code on <a href="https://github.com/Hammie217/logisticMap">GitHub</a>.
+    </p>
+
+    <p class="bodyText">
+        First of all I made the code plot all points equally as a binary yes or no as seen below. This shows off all values found not just the asymptotes hence the strange lines seen.
+    </p>    
+    <img src="/assets/posts/logisticMap/bwLargeCompressed.png"  class="blogImage">
+    <p class="blogImageSubCap">Figure 1: Image where matching pixels were given full brightness.</p>
+    <p class="bodyText">
+        To counter this I made the program instead show the quantity of the points hit by increasing intensity based on quanity similar to persistance on a phosphor screen resulting in the graph below showing much more the asymptotic values.
+    </p>    
+    <img src="/assets/posts/logisticMap/bwWeightedLargeCompressed.png"  class="blogImage">
+    <p class="blogImageSubCap">Figure 2: Image where pixels are weighted based on quantity of matching pixels.</p>
+    <p class="bodyText">
+        After getting the results I was after I decided to have some fun and try to color the screen with similar colors I used for my current background given the aestetic fractals seen resulting with those seen below.
+    </p>   
+    <img src="/assets/posts/logisticMap/colorWeightedLargeCompressed.png"  class="blogImage"> 
+    <p class="blogImageSubCap">Figure 3: Image where pixel color is based on iteration count.</p>
+    <p class="bodyText">
+        The above graphs show the behaviour from the zero point up to chaos showing a lot of detail on empty space. The version below is a close up of the chaotic section starting from the first asymptotic oscillation where you can start to see the fractals repeating.
+    </p>    
+    <img src="/assets/posts/logisticMap/colorWeightedZoomedLargeCompressed.png"  class="blogImage">
+    <p class="blogImageSubCap">Figure 4: Image where pixel color is based on iteration count and zoomed in on chaotic region.</p>
