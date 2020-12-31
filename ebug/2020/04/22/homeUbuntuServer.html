@@ -1,0 +1,192 @@
+<!doctype html>
+<html >
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="Moving data between my PC and laptop soon gets tedious given no compatable usb ports between the two. After using git for moving almost everything I decided it was time to create a home file server.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/themes/prism-okaidia.min.css">
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta charset="utf-8">
+    <title>Home Ubuntu Server</title>
+    <link rel="shortcut icon" href="/assets/images/logo/favicon.ico" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+    <a class="navbar-brand" aria-label="Homepage" href="/index.html">
+        <img src="/assets/images/logo/logo.png" width="64" height="64" class="d-inline-block align-top" alt="" style="image-rendering: pixelated;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto navbarUL">
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/index.html">Home </a>
+          
+        </li>
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/reports.html">Reports</a>
+          
+        </li>
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/About.html">About</a>
+          
+        </li>
+        <li class="nav-item ">
+          
+          <a class="nav-link" href="/Blog.html" >Blog</a>
+          
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <div class="genericTitle">Home Ubuntu Server</div>
+
+    <div class="blogPostMain">
+      <hr style="border-top: 1px solid #fff;">
+      <br style="padding-top: 10px;">
+
+
+      <h1 class="section">Introduction</h1>
+<p class="bodyText">
+    For years i've dealt with multiple operating systems at once, allowing the benefits of each of them. One issue with having mutliple devices and operating systems is sharing data between the two, especially given the new macbook not haveing any connections except a USB C. I've always wanted to have a personal network attached storage server (NAS) to keep all of my long term data on as well as a buffer between devices to allow for clutter free working and painless data sharing. Once cleaning out one of the rooms at home I came accross my old motherboard, CPU and RAM and thought it would be a good use, continuing tidying I found my old laptop which would be an easy test rig where I don't need to buy a power supply or mess around with peripherals. Straight away I got into looking for home server solutions.
+</p>
+<h1 class="section">Technical</h1>
+<p class="bodyText">
+    Given i've used Linux a fair amount and the open source nature I decided to use <a href="https://ubuntu.com/download/server">Ubuntu server</a> as a base using 18.04.4 LTS. After faffing with a USB that simply wasn't happy for a few hours, I changed to a different USB stick and the installation was a couple minute breeze. I chose to setup the device using lan to avoid using network tools i'm not familiar with but used that to install <a href="https://help.ubuntu.com/community/NetworkManager">network-manager</a> a tool i'm more familiar with. Unfortunately given the age of my house the only way I could use the server was over a wifi connection, ideally I would keep the server over LAN constantly.
+</p>
+<h1 class="subsection">Setup wifi</h1>
+<p class="bodyText">
+    To download network-manager:
+</p>
+<pre class="language-bash blogCodeblock">
+    sudo apt install network-manager
+</pre>
+<p class="bodyText">
+    To determine the wifi device:
+</p>
+<pre class="language-bash blogCodeblock">
+    nmcli d
+</pre>
+<p class="bodyText">
+    To enable the wifi device:
+</p>
+<pre class="language-bash blogCodeblock">
+    nmcli r wifi on
+</pre>
+<p class="bodyText">
+    To list available networks:
+</p>
+<pre class="language-bash blogCodeblock">
+    nmcli d wifi list
+</pre>
+<p class="bodyText">
+    Connect the device to the wifi network
+</p>
+<pre class="language-bash blogCodeblock">
+    nmcli d wifi connect #SSIDHere# password #passwordHere#
+</pre>
+
+<h1 class="subsection">Setup file share</h1>
+<p class="bodyText">
+    I must admit I thought there would be more to setting up a samba share but it's incredibly easy when you know what you're looking for. The first and most important step is install samba:
+</p>
+<pre class="language-bash blogCodeblock">
+    sudo apt install samba
+</pre>
+
+<p class="bodyText">
+    The next most important step is to edit the samba config file at <code class="language-bash blogCodeblock">/etc/samba/smb.conf</code> using your editor of choice (Vim is best) adding the line <code class="language-bash blogCodeblock">security = user</code> beneath <code class="language-bash blogCodeblock">workgroup = HOMESERVER</code> and change the workgroup name to something more well defined for you whilst there.
+    <br /> The next changes are to setup the file you'd like to share changing the values to make more sense for your case especially the file path (It dosn't have to exist yet):
+</p>
+<pre class="language-bash blogCodeblock">
+    [share]
+        comment = Ubuntu File Server Share
+        path = /srv/samba/share
+        browsable = yes
+        guest ok = yes
+        read only = no
+        create mask = 0755</pre>
+<p class="bodyText">
+    If the file does not exist or does not yet have the file rights apply the following directory creation and permissions:
+</p>
+<pre class="language-bash blogCodeblock">
+    sudo mkdir -p /srv/samba/share
+    sudo chown nobody:nogroup /srv/samba/share/</pre>
+<p class="bodyText">
+    After setting up the file and configuration, samba service needs to be restarted to take on the changes:
+</p>
+<pre class="language-bash blogCodeblock">
+    sudo systemctl restart smbd.service nmbd.service</pre>
+
+<h1 class="subsection">Guilding Lillies</h1>
+<p class="bodyText">
+After that simple process we have a samba server ready to be used and you can usually stop right there. If you're like me and use a laptop or haven't used a samba server on windows before there are a few tiny steps that help make the system work better.
+</p>
+<h1 class="subsubsection">Disabling laptop sleep</h1>
+<p class="bodyText">
+Because i'm using a laptop, I don't want to have to keep the lid open to keep the server up. Thankfully with linux we can turn off the lit sleeping.
+This is done incredibly easily editing the file <code class="language-bash blogCodeblock">/etc/systemd/loginid.conf</code> setting handleLidSwitch=ignore making sure to remove the hash at the start and it's that easy.
+</p>
+<h1 class="subsubsection">Enabling SMB on windows</h1> 
+<p class="bodyText">
+If you've never used samba on windows, you may need to enable the ability to use a samba share. You can easily do this by navigating to <code class="language-bash blogCodeblock">control panel > programs > turn windows features on or off</code> and selecting the SMB box. Bear in mind you will need to restart your computer to take effect. After this you should be able to see and connect to samba shares in the network tab.
+</p>
+<h1 class="subsubsection">Finding samba address</h1> 
+<p class="bodyText">
+If you've now setup the server but have no idea how to connect, you need to find the servers IP address. You can easily find that out by typing:
+</p>
+<pre class="language-bash blogCodeblock">ifconfig</pre>
+<p class="bodyText">
+or
+</p>
+<pre class="language-bash blogCodeblock">ip</pre>
+<p class="bodyText">
+if you prefer.<br />
+Then read the address shown under your connection device and that is the connection address you need.
+</p>
+ 
+            
+
+    </div>
+
+   
+
+
+        <footer >
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+            
+            <script src="//cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/prism.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.20.0/components/prism-bash.min.js"></script>         
+            
+            <div class="footerBox">
+    <div class="footerText">© 2020 Hamish Sams</div>
+    <div>
+        
+        <a href="https://github.com/Hammie217" aria-label="Github"><img src="/assets/images/footer/github.svg"   alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.linkedin.com/in/hamish-sams-2ba767153" aria-label="Linkedin"><img src="/assets/images/footer/linkedin.svg"  alt="" class="footerImage"></a>
+        
+        
+        <a href="https://twitter.com/Hammie217" aria-label="Twitter"><img src="/assets/images/footer/twitter.svg" alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.facebook.com/Hammie217" aria-label="Facebook"><img src="/assets/images/footer/facebook.svg"  alt="" class="footerImage"></a>
+        
+    </div>
+</div>
+
+          </footer>
+  </body>
+ 
+</html>

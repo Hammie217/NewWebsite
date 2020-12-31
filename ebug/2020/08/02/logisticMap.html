@@ -1,0 +1,116 @@
+<!doctype html>
+<html >
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="A website dedicated to simpifying and explaining the operation of common building block circuits.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta charset="utf-8">
+    <title>Logistic Map</title>
+    <link rel="shortcut icon" href="/assets/images/logo/favicon.ico" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+    <a class="navbar-brand" aria-label="Homepage" href="/index.html">
+        <img src="/assets/images/logo/logo.png" width="64" height="64" class="d-inline-block align-top" alt="" style="image-rendering: pixelated;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto navbarUL">
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/index.html">Home </a>
+          
+        </li>
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/reports.html">Reports</a>
+          
+        </li>
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/About.html">About</a>
+          
+        </li>
+        <li class="nav-item ">
+          
+          <a class="nav-link" href="/Blog.html" >Blog</a>
+          
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <div class="genericTitle">Logistic Map</div>
+
+    <div class="blogPostMain">
+      <hr style="border-top: 1px solid #fff;">
+      <br style="padding-top: 10px;">
+
+
+      <h1 class="section">Introduction</h1>
+    <p class="bodyText">
+        After being intrigued by a <a href="https://www.youtube.com/watch?v=ovJcsL7vyrk">certain video</a> by Veritasium about the logistic map. The logistical map is a map/chart derived from a simple iterative equation commonly used for modelling populations x=rx(1-x). When using this equation it is usual for a population to reach an asymptote meaning no matter the starting value over time the population will settle to a stable value determined by the rate R. For R is less than 1 the value will always be 0 as the population is reproducing slower than death. For values above that you may assumme a non-zero asymptote is found increasing with R. That's true until even further the asymptote oscillates between two values, and beyond this value the two asymptotic values themselves osciallate between two more and so on until apparent randomness. If you'd like to see that relationship the best place to look is Figure:2 with the R value and asymptotic value on the y axis. 
+    </p>
+<h1 class="section">Code</h1>
+    <p class="bodyText">
+        To show this relationship I decided i'd like to plot it and create an image. This reminded me of a project from a while ago where I made my current desktop of a mandelbrot set using python. I decided to start with the same library Pillow and start this mini-project where you can find the code on <a href="https://github.com/Hammie217/logisticMap">GitHub</a>.
+    </p>
+
+    <p class="bodyText">
+        First of all I made the code plot all points equally as a binary yes or no as seen below. This shows off all values found not just the asymptotes hence the strange lines seen.
+    </p>    
+    <img src="/assets/posts/logisticMap/bwLargeCompressed.png"  class="blogImage">
+    <p class="blogImageSubCap">Figure 1: Image where matching pixels were given full brightness.</p>
+    <p class="bodyText">
+        To counter this I made the program instead show the quantity of the points hit by increasing intensity based on quanity similar to persistance on a phosphor screen resulting in the graph below showing much more the asymptotic values.
+    </p>    
+    <img src="/assets/posts/logisticMap/bwWeightedLargeCompressed.png"  class="blogImage">
+    <p class="blogImageSubCap">Figure 2: Image where pixels are weighted based on quantity of matching pixels.</p>
+    <p class="bodyText">
+        After getting the results I was after I decided to have some fun and try to color the screen with similar colors I used for my current background given the aestetic fractals seen resulting with those seen below.
+    </p>   
+    <img src="/assets/posts/logisticMap/colorWeightedLargeCompressed.png"  class="blogImage"> 
+    <p class="blogImageSubCap">Figure 3: Image where pixel color is based on iteration count.</p>
+    <p class="bodyText">
+        The above graphs show the behaviour from the zero point up to chaos showing a lot of detail on empty space. The version below is a close up of the chaotic section starting from the first asymptotic oscillation where you can start to see the fractals repeating.
+    </p>    
+    <img src="/assets/posts/logisticMap/colorWeightedZoomedLargeCompressed.png"  class="blogImage">
+    <p class="blogImageSubCap">Figure 4: Image where pixel color is based on iteration count and zoomed in on chaotic region.</p>
+
+    </div>
+
+   
+
+
+        <footer >
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+            
+            <div class="footerBox">
+    <div class="footerText">© 2020 Hamish Sams</div>
+    <div>
+        
+        <a href="https://github.com/Hammie217" aria-label="Github"><img src="/assets/images/footer/github.svg"   alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.linkedin.com/in/hamish-sams-2ba767153" aria-label="Linkedin"><img src="/assets/images/footer/linkedin.svg"  alt="" class="footerImage"></a>
+        
+        
+        <a href="https://twitter.com/Hammie217" aria-label="Twitter"><img src="/assets/images/footer/twitter.svg" alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.facebook.com/Hammie217" aria-label="Facebook"><img src="/assets/images/footer/facebook.svg"  alt="" class="footerImage"></a>
+        
+    </div>
+</div>
+
+          </footer>
+  </body>
+ 
+</html>

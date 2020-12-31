@@ -1,0 +1,116 @@
+<!doctype html>
+<html >
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="A begining into the stability and volt chasing area of electronics constantly looking for more precise electronics here using an LM399 reference.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta charset="utf-8">
+    <title>LM399 Reference</title>
+    <link rel="shortcut icon" href="/assets/images/logo/favicon.ico" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+    <a class="navbar-brand" aria-label="Homepage" href="/index.html">
+        <img src="/assets/images/logo/logo.png" width="64" height="64" class="d-inline-block align-top" alt="" style="image-rendering: pixelated;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto navbarUL">
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/index.html">Home </a>
+          
+        </li>
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/reports.html">Reports</a>
+          
+        </li>
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/About.html">About</a>
+          
+        </li>
+        <li class="nav-item ">
+          
+          <a class="nav-link" href="/Blog.html" >Blog</a>
+          
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <div class="genericTitle">LM399 Reference</div>
+
+    <div class="blogPostMain">
+      <hr style="border-top: 1px solid #fff;">
+      <br style="padding-top: 10px;">
+
+
+      <h1 class="section">Introduction</h1>
+<p class="bodyText">
+I've been becoming more and more interested in chasing the microvolts in systems for designing my own test equipment. Currently the LTZ1000 is top of the range for hobbyists and unfotunately top of the hobbyist price range too. The much more elegantly priced LM399 is readily available and already way above to accuracy I can measure.
+</p>
+
+<h1 class="subsection">Schematic</h1>
+<p class="bodyText">
+To get started I used the typical application schematic from the front page of the LM399 datasheet as seen below in Figure 1.
+</p>
+<img src="/assets/posts/LM399/file.svg" alt="Circuit PDF to SVG" width="100%" style="padding-top: 15px;">
+<p class="blogImageSubCap">Figure 1: The simple LM399 1V reference design</p>
+<p class="bodyText">
+Simply put it is a precise zenner diode (precise in low temp constant as the reference is actually around 5% tolerance) kept at a constant heat using a heater in the ceramic tin. This keeps the reference at a fairly constant temperature but a small gust or ambient changes can still make a large difference. Due to that I boxed up the breadboarded design into a padded black box with a small hole to pass the wires through as seen in Figure 2.
+</p>
+
+
+<img src="/assets/posts/LM399/Box-min.jpg" class="blogImage"><br />
+<p class="blogImageSubCap">Figure 2: Padded black box LM399 storage.</p>
+
+    <h1 class="subsection">Short term stablity</h1>
+    <p class="bodyText">
+    To record the short term stability I used a very primative setup of recording the screen over the timescale due to a lack of lab infrastructure currently. I recorded the time alongside this using a kitchen timer seen in the top left. The voltage was measured by my new, uncalibrated 3478A multimeter which actually uses a LM399 as its internal reference, the same as its 7.5 digit brother which instills confidence in the measurement equipment.
+    To "burn off" any internal impurities lefover from manufacture or transport I ran the system for around a day before measuring which ended up making a fair difference in the recorded voltage. The video below shows the reference after this stage running for 99 minutes and only the last digit changes which could well be a mix of the multimeter and reference variance.
+</p>
+    <video  controls class="blogVideo">
+        <source src="/assets/posts/LM399/Stability.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+      </video>
+    <p class="blogImageSubCap">Figure 2: 99 minute stability time lapse.</p>
+
+    </div>
+
+   
+
+
+        <footer >
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+            
+            <div class="footerBox">
+    <div class="footerText">© 2020 Hamish Sams</div>
+    <div>
+        
+        <a href="https://github.com/Hammie217" aria-label="Github"><img src="/assets/images/footer/github.svg"   alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.linkedin.com/in/hamish-sams-2ba767153" aria-label="Linkedin"><img src="/assets/images/footer/linkedin.svg"  alt="" class="footerImage"></a>
+        
+        
+        <a href="https://twitter.com/Hammie217" aria-label="Twitter"><img src="/assets/images/footer/twitter.svg" alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.facebook.com/Hammie217" aria-label="Facebook"><img src="/assets/images/footer/facebook.svg"  alt="" class="footerImage"></a>
+        
+    </div>
+</div>
+
+          </footer>
+  </body>
+ 
+</html>

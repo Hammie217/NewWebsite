@@ -1,0 +1,126 @@
+<!doctype html>
+<html >
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="A simple tutorial for setting up a custom website URL from scratch. Here I use namecheap and netlify but the steps are almost identical for other domain registrar, SSL certificates and website hosts like goDaddy, cloudflare and gitHub Pages.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta charset="utf-8">
+    <title>Custom Domain</title>
+    <link rel="shortcut icon" href="/assets/images/logo/favicon.ico" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+    <a class="navbar-brand" aria-label="Homepage" href="/index.html">
+        <img src="/assets/images/logo/logo.png" width="64" height="64" class="d-inline-block align-top" alt="" style="image-rendering: pixelated;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto navbarUL">
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/index.html">Home </a>
+          
+        </li>
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/reports.html">Reports</a>
+          
+        </li>
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/About.html">About</a>
+          
+        </li>
+        <li class="nav-item ">
+          
+          <a class="nav-link" href="/Blog.html" >Blog</a>
+          
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <div class="genericTitle">Custom Domain Setup</div>
+
+    <div class="blogPostMain">
+      <hr style="border-top: 1px solid #fff;">
+      <br style="padding-top: 10px;">
+
+
+      <h1 class="section">Introduction</h1>
+    <p class="bodyText">
+        Here I will show the few simple steps I went through to register my new website <a href="http://fortheloveofcircuits.co.uk/">fortheloveofcircuits.co.uk</a>. To setup the website I used <a href="https://www.namecheap.com/">namecheap</a> as a domain registrar and then <a href="https://www.netlify.com/">netlify</a> to host the website through a <a href="https://github.com/Hammie217/forTheLoveOfCircuits">gitHub repository</a> and as a SSL certificate supplier. Other commonly used services such as goDaddy, cloudflare and gitHub pages can be setup using similar steps but with different menus.
+    </p>
+        <h1 class="section">Buy domain</h1>
+        <p class="bodyText">
+        First of all you need to find out where you can find your domain, I find namecheap has the simplest and cheapest domains versus other larger name companies. All you need to do is find your domain name and top-level domain (TLD), these can vary largely in cost but ensure the name is cheap after the first year if you plan to keep the domain for years.
+    </p>
+        <img src="/assets/posts/customDomain/1.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 1: Buying the domain name.</p>
+        
+        <h1 class="section">Register domain with host </h1>
+        <p class="bodyText">
+        Next you need to setup your domain to point to your website host, this is done by registering your domain with your host who will then supply the name servers to point to to redirect to your website. On netlify this can be found at the top of your website page after being setup labeled register a custom domain which leads to some comprehensible instructions.
+        </p>
+        <img src="/assets/posts/customDomain/2.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 2: Selecting setup custom domain on netlify.</p>
+
+        <img src="/assets/posts/customDomain/3.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 3: Entering the domain info on netlify.</p>
+        
+        <h1 class="section">Connect nameservers</h1>
+        <p class="bodyText">
+            After registering and getting your services nameservers (usually 2 or 4 of them as seen below), you need to setup the registrar to point to these servers. After navigating to your website on the registrar there should be a section dedicated to nameservers where you can select a custom DNS, after selecting custom you then need to copy these names over into the registrar and you're ready to go.
+        </p>
+        <img src="/assets/posts/customDomain/4.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 4: Netlify nameservers.</p>
+
+        <img src="/assets/posts/customDomain/5.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 5: Namecheap nameservers setup.</p>
+
+        <h1 class="section">Setup SSL certificate</h1>
+        <p class="bodyText">
+            If you would like a more trustworthy site and overall more secure system you will likely need a SSL certificate. Some domains such as .dev and .app actually require a SSL certificate to display a website at all given a requirement for HTTPS to be used. Most sites use cloudflare for their SSL which is a good option for those hosting their site through gitHub pages, Heroku or others that don't offer SSL certificates. Netlify does offer a free SSL service to any website registered on their system so for ease I will be using that. With nelify it is as easy as setting up your site and waiting for the certificate to be issued, this can be seen below.
+        </p>
+        <img src="/assets/posts/customDomain/6.png"  class="blogImage">
+        <p class="blogImageSubCap">Figure 6: Netlify SSL certificate confirmation.</p>
+
+
+
+    </div>
+
+   
+
+
+        <footer >
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+            
+            <div class="footerBox">
+    <div class="footerText">© 2020 Hamish Sams</div>
+    <div>
+        
+        <a href="https://github.com/Hammie217" aria-label="Github"><img src="/assets/images/footer/github.svg"   alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.linkedin.com/in/hamish-sams-2ba767153" aria-label="Linkedin"><img src="/assets/images/footer/linkedin.svg"  alt="" class="footerImage"></a>
+        
+        
+        <a href="https://twitter.com/Hammie217" aria-label="Twitter"><img src="/assets/images/footer/twitter.svg" alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.facebook.com/Hammie217" aria-label="Facebook"><img src="/assets/images/footer/facebook.svg"  alt="" class="footerImage"></a>
+        
+    </div>
+</div>
+
+          </footer>
+  </body>
+ 
+</html>

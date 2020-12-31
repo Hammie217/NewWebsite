@@ -1,0 +1,159 @@
+<!doctype html>
+<html >
+  <head>
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="Description" content="This is a look into the re-design of the previously mentioned and described powersupply design addressing issues found and how they were improved for the second version.">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta charset="utf-8">
+    <title>Linear power supply V2</title>
+    <link rel="shortcut icon" href="/assets/images/logo/favicon.ico" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent ">
+    <a class="navbar-brand" aria-label="Homepage" href="/index.html">
+        <img src="/assets/images/logo/logo.png" width="64" height="64" class="d-inline-block align-top" alt="" style="image-rendering: pixelated;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto navbarUL">
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/index.html">Home </a>
+          
+        </li>
+        <li class="nav-item">
+          
+            <a class="nav-link" href="/reports.html">Reports</a>
+          
+        </li>
+        <li class="nav-item">
+          
+          <a class="nav-link" href="/About.html">About</a>
+          
+        </li>
+        <li class="nav-item ">
+          
+          <a class="nav-link" href="/Blog.html" >Blog</a>
+          
+        </li>
+      </ul>
+    </div>
+  </nav>
+    <div class="genericTitle">Linear power supply V2</div>
+
+    <div class="blogPostMain">
+      <hr style="border-top: 1px solid #fff;">
+      <br style="padding-top: 10px;">
+
+
+      <h1 class="section">Introduction</h1>
+    <p class="bodyText">
+        If you haven't seen the previous design post <a href="https://hamish.science/2020/04/15/linear-power-supply">here</a>, feel free to take a look at the design stage first. Here I will discuss the building up process, what I learned, debugging and desired improvements for the project.
+        Overall the Version 1 board was successful, a few issues I wouldn't like to ship a product with (See Figure: 1) but all of which are a learning dimension.
+    </p>
+
+    <img src="/assets/posts/linearPowerSupply2/BuiltUp.jpg" class="blogImage"><br />
+    <p class="blogImageSubCap">Figure 1: Image of the version1 design made up and tested.</p>
+
+<h1 class="section">Building the board</h1>
+    <p class="bodyText">
+        Building the board was fairly straight forward despite the small footprints. I used a chisel tip simply as it is all I had, the small atmega328p pins ended up sometimes shorting but could be easily fixed by tinning a dry soldering iron using the shorted pins. I built the board starting with small SMD components, especially ones with small and painful to get to pins with other components then moving onto taller and finally throughhole components. 
+
+    </p>
+
+<h1 class="section">Debugging and Improvements</h1>
+    <p class="bodyText">
+        After building the board, programming and testing the circuit there were a few issues ranging from big to small, I've listed these below in a rough importance order.
+    </p>
+    <ul class="bodyText">
+        <li>Sense- not connected</li>
+        <li>Capacitors C2,C3 and C4 too low voltage (Bang)</li>
+        <li>Q1 Pin 2-3 shorted</li>
+        <li>Max4080 output oscillating (filter or re-design)</li>
+        <li>Display MISO need to be connected to a new RS pin</li>
+        <li>LT3080 Heatplane re-design</li>
+        <li>Max4080 no decoupling</li>
+        <li>Grounding method improvements</li>
+        <li>Display header doesn't fit without extension (would be wired in box)</li>
+        <li>Rotary encoders too close</li>
+        <li>Contacts too small for banana plugs</li>
+        <li>Footprints aren't good for handsoldering</li>
+        <li>Crystal oscillator minutely too small</li>
+        <li>Crystal oscillator not needed but could be improved</li>
+        <li>Overcurrent detection transistor</li>
+        <li>Rotary encoders not notched</li>
+        <li>Another diagnostic LED (good for showing current limit)</li>
+        <li>Shrink the board and tighten component placement based around a project case</li>
+        <li>Logo to silk screen</li>
+        <li>Re-design input power stage? (Not sure yet, no resources to test mains safely)</li>
+      </ul>
+      <p class="bodyText">
+      Some of these are easier to fix than others such as connecting the Sense- doesn't need much expanation and so I'll only explain any that require some creativity.
+
+      The output of the Max4080 appears to be some PWM like signal, evidently a low pass filter is required to fix these oscillations. Instead I could replace this with a differential amplifier with lasered 0.1% resistors for accuracy if required, I chose not to implement that unless needed to reduce costs as I already have a spare max4080 although I would likely change that in a future revision given the max4080 max accuracy (although typical is the same as 0.1% tolerance resistors).
+      The display pinout I completely mucked up, these pins needed to be mixed about and slave select moved off the hardware pin as of the multiple devices. The display also dosn't fit on the board due to the tall capacitors although this would be wired realistically.
+      Although no issues were raised, a better attempt at creating a heatplane for the LT3080 would be useful given the SMD device making sure as little thermal relief as possible.
+      The current grounding method is messy due to a shared plane between power, analogue and digital sections. A more appropriate metho would be separate plains connected by a star point to share potential without creating ground loops.
+      The output of the board has large (but small) holes to connect wires to for a front pannel connection, this is fine for that job but the PCB may be used without a box and why limit the board to external banana plugs when they can be mounted there. This also raises the need of having a standard distance between these holes for rigid connectors.
+      The onboard crystal used is slightly bigger than the footprint easily fixed, but also missing capacitors for oscillations due to a datasheet misunderstanding. This crystal can also be improved a fair bit for the requirement of faster readings or updates or simply omitted and the use of an internal oscillator due to no need for correct time.
+      The input power stage currently hasn't been tested with mains, this is a bit annoying but I don't have the facilities to test the device with mains safely. For this reason I will design future systems with mains available but also the input from an external DC source or possibly a off the shelf mains converter, although I'd like to avoid the disgusting ripples generated from them. 
+      The new board was also desinged to be 100x100mm for JLC manufacture.
+
+      <h1 class="subsection">Version 2 Design</h1>
+      <p style="text-align: center;">All of the above issues that can be fixed in a schematic are shown below in the new design.</p>
+      <img src="/assets/posts/linearPowerSupply2/SchematicV2.PNG" class="blogImage"><br />
+    <p class="blogImageSubCap">Figure 2: Version 2 schematic.</p>
+
+
+    <p class="bodyText"> Again any changes required were made to the PCB, unfortuantely I couldn't find any solid online information about banana plug standard holes, sizes or spacings and so are a mix of numbers I saw and guesses.</p>
+    <img src="/assets/posts/linearPowerSupply2/PCBV2.PNG" class="blogImage"><br />
+    <p class="blogImageSubCap">Figure 3: Version 2 PCB design.</p>
+    <p class="bodyText"> The renders are shown below for a better understanding of looks.</p>
+    <img src="/assets/posts/linearPowerSupply2/3DV2.PNG" class="blogImage"><br />
+    <p class="blogImageSubCap">Figure 4: Version 2 front 3D render.</p>
+
+    <img src="/assets/posts/linearPowerSupply2/3DBackV2.PNG" class="blogImage"><br />
+    <p class="blogImageSubCap">Figure 5: Version2 back 3D render.</p>
+
+    <p class="bodyText">When ordering the new designs I ended up ordering SMD assembly for the basic components such as resistors, capacitors and op-amps for ease and the cheap availability of these services. This was done using JLC alongised LCSC for components. Thus this triggers a new wave of waiting to test the new design and report back about successes and failures.</p>
+
+    </p>
+
+    </div>
+
+   
+
+
+        <footer >
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+            
+            
+            <div class="footerBox">
+    <div class="footerText">© 2020 Hamish Sams</div>
+    <div>
+        
+        <a href="https://github.com/Hammie217" aria-label="Github"><img src="/assets/images/footer/github.svg"   alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.linkedin.com/in/hamish-sams-2ba767153" aria-label="Linkedin"><img src="/assets/images/footer/linkedin.svg"  alt="" class="footerImage"></a>
+        
+        
+        <a href="https://twitter.com/Hammie217" aria-label="Twitter"><img src="/assets/images/footer/twitter.svg" alt="" class="footerImage"></a>
+        
+        
+        <a href="https://www.facebook.com/Hammie217" aria-label="Facebook"><img src="/assets/images/footer/facebook.svg"  alt="" class="footerImage"></a>
+        
+    </div>
+</div>
+
+          </footer>
+  </body>
+ 
+</html>
